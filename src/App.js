@@ -4,6 +4,7 @@ import AuthProvider from './contexts/AuthProvider';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import AboutUs from './components/AboutUs/AboutUs';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path='/home'>
               <Home></Home>
+            </Route>
+            <Route path='/about'>
+              <AboutUs></AboutUs>
             </Route>
             <Route path='/register'>
               <Register></Register>

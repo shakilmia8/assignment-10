@@ -1,0 +1,30 @@
+.footer{
+    background-color: #212529;
+    color:#fff;
+    padding: 20px 0px;
+}
+.footer h4{
+    margin-bottom: 20px;
+}
+.footer h4::after{
+    stroke: lightcoral;
+}
+.footer ul li{
+    list-style: none;
+    padding: 5px 0px;
+    text-align: left;
+}
+.footer ul li i{
+    font-size: 18px;
+}
+.footer-up{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Make it responsive */
+@media only screen and (max-width:688px) {
+    .footer-up{
+        flex-direction: column;
+    }
+}

@@ -10,3 +10,14 @@
     margin-top: 80px;
     font-size: 55px;
 }
+
+
+/* Make it responsive */
+@media only screen and (max-width:991px) {
+    .banner{
+        flex-direction: column;
+    }
+    .banner h1{
+        margin: 40px auto;
+    }    
+}
