@@ -4,7 +4,9 @@ import AuthProvider from './contexts/AuthProvider';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Doctors from './components/Doctors/Doctors';
 import AboutUs from './components/AboutUs/AboutUs';
+import Contact from './components/Contact/Contact';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
@@ -27,9 +29,15 @@ function App() {
             <Route path='/home'>
               <Home></Home>
             </Route>
+            <Route path='/doctors'>
+              <Doctors></Doctors>
+            </Route>
             <Route path='/about'>
               <AboutUs></AboutUs>
             </Route>
+            <PrivateRoute path='/contact'>
+              <Contact></Contact>
+            </PrivateRoute>
             <Route path='/register'>
               <Register></Register>
             </Route>

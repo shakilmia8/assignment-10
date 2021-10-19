@@ -1,0 +1,20 @@
+.doctor-container{
+    padding: 20px;
+}
+.doctor{
+    background-color: #191D42;
+    color: #fff;
+}
+.img{
+    margin: 10px auto;
+    width: 50%;
+    border-radius: 50%;
+}
+.doctor-text{
+    text-align: end;
+    margin: 5px auto;
+}
+.doctor-text p{
+    margin-top: 10px;
+    line-height: 15px;
+}
