@@ -1,43 +1,48 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-// import { Col, Card, Button } from 'react-bootstrap';
+import { Col, Card, Button } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
 import './ServiceDetails.css';
 
 const ServiceDetails = () => {
     const { serviceId } = useParams();
-    const [service, setService] = useState({});
+    const [service, setService] = useState([]);
+    const [singleService, setSingleService] = useState({});
+
+    // const url = `./servicesdetails.json/${serviceId}`;
+    useEffect(() => {
+        fetch('/servicesdetails.json')
+            .then(res => res.json())
+            .then(data => setService(data.tree));
+    }, [serviceId])
 
     useEffect(() => {
-        const url = `./services.json/${serviceId}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setService(data));
-    }, [serviceId])
-    const { name } = service;
+        const foundService = service.find(ser => ser.id === serviceId)
+        setSingleService(foundService);
+    }, [service])
+
 
     return (
         <div className='details'>
-            <h2>Welcome is Details Number {serviceId} </h2>
-            <h1>{name}</h1>
-            <Link to={`/home`}>
-                <Button variant='dark'>See All Services</Button>
-            </Link>
-            {/* <Col>
+            <h2>Welcome is Service Details</h2>
+
+            <Col>
                 <Card>
-                    <Card.Img className='img' variant="top" src={img} />
+                    <Card.Img className='img' variant="top" src={singleService?.img} />
                     <Card.Body>
-                        <Card.Title>{name} hello</Card.Title>
-                        <Card.Text> hi
-                            {describe}
+                        <Card.Title>{singleService?.name}</Card.Title>
+                        <Card.Text>
+                            {singleService?.describe}
+                            <br />
+                            <br />
                             <Link to={`/home`}>
                                 <Button variant='dark'>See All Services</Button>
                             </Link>
                         </Card.Text>
                     </Card.Body>
                 </Card>
-            </Col> */}
+            </Col>
+
         </div>
     );
 };
