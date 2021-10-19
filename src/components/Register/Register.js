@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 const Register = () => {
     const { auth, error, setUser, setError, signInUsingGoogle, createUserWithEmailAndPassword } = useAuth();
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const location = useLocation();
@@ -19,6 +20,9 @@ const Register = () => {
                 history.push(redirect_uri);
             });
     };
+    const handleNameChange = e => {
+        setName(e.target.value);
+    }
     const handleEmailChange = e => {
         setEmail(e.target.value);
     };
@@ -31,10 +35,11 @@ const Register = () => {
             setError('password must be at least 6 characters');
             return;
         };
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password, name)
             .then(result => {
                 const user = result.user;
                 setUser(user);
+                console.log(user);
                 setError('');
             }).catch(error => {
                 setError(error.message);
@@ -44,13 +49,13 @@ const Register = () => {
         <div className='register'>
             <h2>Please Sign Up</h2>
             <form onSubmit={handleRegister}>
-                <input type="text" name="name" id="" placeholder='Enter Your Name' required />
+                <input onBlur={handleNameChange} type="text" name="name" id="#" placeholder='Enter Your Name' required />
                 <br />
-                <input onBlur={handleEmailChange} type="text" name="email" id="" placeholder='Enter Your E-mail' required />
+                <input onBlur={handleEmailChange} type="text" name="email" id="#" placeholder='Enter Your E-mail' required />
                 <br />
-                <input onBlur={handlePasswordChange} type="password" name="password" id="" placeholder='Enter Your Password' required />
+                <input onBlur={handlePasswordChange} type="password" name="password" id="#" placeholder='Enter Your Password' required />
                 <br />
-                <input onBlur={handlePasswordChange} type="password" name="password" id="" placeholder='Enter Your Re-password' required />
+                <input onBlur={handlePasswordChange} type="password" name="password" id="#" placeholder='Enter Your Re-password' required />
                 <br />
                 <div>{error}</div>
                 <input type="submit" value="Register" />

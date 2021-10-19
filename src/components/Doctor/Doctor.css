@@ -14,7 +14,7 @@
     text-align: end;
     margin: 5px auto;
 }
-.doctor-text p{
+.doctor-text span{
     margin-top: 10px;
     line-height: 15px;
 }

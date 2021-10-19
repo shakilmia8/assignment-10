@@ -30,7 +30,7 @@ const useFirebase = () => {
             }
             setIsLoading(false);
         })
-    }, []);
+    }, [auth]);
 
     const logOut = () => {
         setIsLoading(true);

@@ -43,9 +43,9 @@ const Login = () => {
         <div className='login'>
             <h2>Please Login</h2>
             <form onSubmit={handleLogIn}>
-                <input onBlur={handleEmailChange} type="text" name="email" id="" placeholder='Enter Your E-mail' required />
+                <input onBlur={handleEmailChange} type="text" name="email" id="#" placeholder='Enter Your E-mail' required />
                 <br />
-                <input onBlur={handlePasswordChange} type="password" name="password" id="" placeholder='Enter Your Password' required />
+                <input onBlur={handlePasswordChange} type="password" name="password" id="#" placeholder='Enter Your Password' required />
                 <br />
                 <div>{error}</div>
                 <input type="submit" value="Log In" />

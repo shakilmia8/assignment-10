@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Col, Card, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+// import { Col, Card, Button } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
 import './ServiceDetails.css';
 
@@ -13,8 +14,8 @@ const ServiceDetails = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setService(data));
-    }, [])
-    const { name, describe, img } = service;
+    }, [serviceId])
+    const { name } = service;
 
     return (
         <div className='details'>

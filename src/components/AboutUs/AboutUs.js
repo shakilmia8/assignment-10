@@ -32,19 +32,18 @@ const AboutUs = () => {
 
                 <h2>Our Values</h2>
                 <p>In the pursuit of this vision, the actions of leadership, staff and other physicians will be guided by the following values:
-
-                    <ul>
-                        <li>Integrity</li>
-                        <li>Excellence</li>
-                        <li>Teamwork and collaboration</li>
-                        <li>Respect</li>
-                        <li>Compassion</li>
-                        <li>Innovation</li>
-                        <li>Stewardship</li>
-                        <li>Efficiency</li>
-                        <li>Diversity</li>
-                    </ul>
                 </p>
+                <ul>
+                    <li>Integrity</li>
+                    <li>Excellence</li>
+                    <li>Teamwork and collaboration</li>
+                    <li>Respect</li>
+                    <li>Compassion</li>
+                    <li>Innovation</li>
+                    <li>Stewardship</li>
+                    <li>Efficiency</li>
+                    <li>Diversity</li>
+                </ul>
             </div>
         </div>
     );

@@ -12,9 +12,9 @@ const Doctor = (props) => {
                     <Card.Body>
                         <Card.Title className="doctor-text">Name : {name}</Card.Title>
                         <Card.Text className="doctor-text">
-                            <p> Country : {country}</p>
-                            <p> Designation : {role}</p>
-                            <p> Age : {age}</p>
+                            <span> Country : {country}</span><br />
+                            <span> Designation : {role}</span><br />
+                            <span> Age : {age}</span>
                         </Card.Text>
                     </Card.Body>
                 </Card>
