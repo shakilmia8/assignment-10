@@ -2,29 +2,64 @@ import { Button } from 'react-bootstrap';
 import React from 'react';
 import './Register.css';
 import useAuth from '../../hooks/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
 const Register = () => {
-    const { signInUsingGoogle } = useAuth();
+    const { auth, error, setUser, setError, signInUsingGoogle, createUserWithEmailAndPassword } = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location.state?.from || '/home';
+
+    const handleGoogleSignIn = () => {
+        signInUsingGoogle()
+            .then(result => {
+                history.push(redirect_uri);
+            });
+    };
+    const handleEmailChange = e => {
+        setEmail(e.target.value);
+    };
+    const handlePasswordChange = e => {
+        setPassword(e.target.value);
+    };
+    const handleRegister = e => {
+        e.preventDefault();
+        if (password.length < 6) {
+            setError('password must be at least 6 characters');
+            return;
+        };
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                setError('');
+            }).catch(error => {
+                setError(error.message);
+            });
+    };
     return (
         <div className='register'>
             <h2>Please Sign Up</h2>
-            <form action="">
-                <input type="text" name="name" id="" placeholder='Enter Your Name' />
+            <form onSubmit={handleRegister}>
+                <input type="text" name="name" id="" placeholder='Enter Your Name' required />
                 <br />
-                <input type="text" name="email" id="" placeholder='Enter Your E-mail' />
+                <input onBlur={handleEmailChange} type="text" name="email" id="" placeholder='Enter Your E-mail' required />
                 <br />
-                <input type="password" name="password" id="" placeholder='Enter Your Password' />
+                <input onBlur={handlePasswordChange} type="password" name="password" id="" placeholder='Enter Your Password' required />
                 <br />
-                <input type="password" name="password" id="" placeholder='Enter Your Re-password' />
+                <input onBlur={handlePasswordChange} type="password" name="password" id="" placeholder='Enter Your Re-password' required />
                 <br />
-                <input type="submit" value="submit" />
+                <div>{error}</div>
+                <input type="submit" value="Register" />
             </form>
             <br />
             <p>Already have an account? <Link to='/login'>click here</Link></p>
             <div>------------------or------------------</div>
             <br />
-            <Button onClick={signInUsingGoogle}>Google Sign In</Button>
+            <Button onClick={handleGoogleSignIn}>Google Sign In</Button>
         </div>
     );
 };
